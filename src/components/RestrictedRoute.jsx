@@ -10,6 +10,9 @@ const RestrictedRoute = ({ component: Component, redirectTo }) => {
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };
 
-RestrictedRoute.propTypes = {};
+RestrictedRoute.propTypes = {
+  component: PropTypes.element,
+  redirectTo: PropTypes.string.isRequired,
+};
 
 export default RestrictedRoute;

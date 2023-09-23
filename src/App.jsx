@@ -7,11 +7,12 @@ import PrivateRoot from 'components/PrivateRoot';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/operations';
-import { getIsRefreshing } from 'redux/selectors';
+import { getIsLoggedIn, getIsRefreshing } from 'redux/selectors';
 
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(getIsRefreshing);
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -20,7 +21,16 @@ export default function App() {
   if (!isRefreshing) {
     return (
       <Routes>
-        <Route path="/" element={<Navigate to="/contacts" />} />
+        <Route
+          path="/"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/contacts" />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
+        />
         <Route
           path="/contacts"
           element={

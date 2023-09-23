@@ -1,10 +1,16 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 export const getIsLoading = state => state.contacts.isLoading;
-export const getError = state => state.contacts.error;
+export const getContactsError = state => state.contacts.error;
 
 export const getContacts = state => state.contacts.items;
 export const getFilter = state => state.filter;
+
+export const getIsLoggedIn = state => state.auth.isLoggedIn;
+export const getIsRefreshing = state => state.auth.isRefreshing;
+export const getUserEmail = state => state.auth.user.email;
+export const getErrorReg = state => state.auth.errorReg;
+export const getErrorLog = state => state.auth.errorLog;
 
 export const getfilteredContacts = createSelector(
   [getContacts, getFilter],

@@ -9,7 +9,7 @@ const authSlice = createSlice({
     errorLog: null,
     token: null,
     isLoggedIn: false,
-    isRefreshing: false,
+    isRefreshing: true,
   },
   extraReducers: {
     [register.pending](state) {
